@@ -11,7 +11,7 @@ screen = pygame.display.set_mode(background_size)    #如果直接写size记得s
 pygame.display.set_caption('plane war')
 
 '''----- image -----'''
-background_image = pygame.image.load(r'./image/sky.jpeg').convert()    #convert转换image的透明度
+background_image = pygame.image.load(r'./image/sky.jpeg').convert()    #convert转换image的透明度,将图片进行surface对象，pygame现在会自动处理
 
 '''----- sound -----'''
 pygame.mixer.music.load(r'./sound/春花.mp3')
