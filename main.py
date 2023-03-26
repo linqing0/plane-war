@@ -15,8 +15,8 @@ background_image = pygame.image.load(r'./image/sky.jpeg').convert()    #convert�
 
 '''----- sound -----'''
 pygame.mixer.music.load(r'./sound/春花.mp3')
-
-
+bullet_sound = pygame.mixer.Sound(r'./sound/bullet.wav')
+bullet_sound.set_volume(0.2)
 #####主程序#####
 def main():
     pygame.mixer.music.play(-1)    #循环播放
