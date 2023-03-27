@@ -36,13 +36,20 @@ def main():
                 sys.exit()
 
         screen.blit(background_image, (0, 0))
+        screen.blit(me.player_image,me.rect)
         pygame.display.flip()  # flip() 更新整个待显示的Surface对象到屏幕上；update() 更新部分内容显示到屏幕上，如果没有参数，则与flip功能相同
         clock.tick(60)  # 设置成60帧
 
         '''----- 监听键盘 -----'''    #响应键盘操作：（1）通过检测事件消息如key_down消息，那么就是按下了按键。适用偶然按下！！！ （2）调用key模块里的get_press方法，使用会返回包含该按键bool值的序列 如果是True就说明按键按下。适用一直按着按键！！！
         key_pressed = pygame.key.get_pressed()    #包含整个键盘的bool类型值
         if key_pressed[K_w] or key_pressed[K_UP]:
-            pass
+            me.move_up()
+        elif key_pressed[K_s] or key_pressed[K_DOWN]:
+            me.move_down()
+        elif key_pressed[K_a] or key_pressed[K_LEFT]:
+            me.move_left()
+        elif key_pressed[K_d] or key_pressed[K_RIGHT]:
+            me.move_right()
 
 
 
