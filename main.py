@@ -46,7 +46,7 @@ def main():
         if key_pressed[K_d] or key_pressed[K_RIGHT]:
             me.move_right()
 
-        screen.blit(background_image, (0, 0))
+        screen.blit(background_image, (0, 0))    #background image必须写在player image前面，反之则会遮挡display player
         '''----- display player -----'''
         switch_image = not switch_image    #取反
         if switch_image:
@@ -54,7 +54,7 @@ def main():
         else:
             screen.blit(me.player_image2,me.rect)
 
-        screen.blit(background_image, (0, 0))
+
         pygame.display.flip()  # flip() 更新整个待显示的Surface对象到屏幕上；update() 更新部分内容显示到屏幕上，如果没有参数，则与flip功能相同
         clock.tick(60)  # 设置成60帧
 
