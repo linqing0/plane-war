@@ -35,7 +35,7 @@ def main():
                 pygame.quit()
                 sys.exit()
 
-        '''----- 监听键盘 -----'''    #响应键盘操作：（1）通过检测事件消息如key_down消息，那么就是按下了按键。适用偶然按下！！！ （2）调用key模块里的get_press方法，使用会返回包含该按键bool值的序列 如果是True就说明按键按下。适用一直按着按键！！！
+        '''----- 监听keyboard -----'''    #响应键盘操作：（1）通过检测事件消息如key_down消息，那么就是按下了按键。适用偶然按下！！！ （2）调用key模块里的get_press方法，使用会返回包含该按键bool值的序列 如果是True就说明按键按下。适用一直按着按键！！！
         key_pressed = pygame.key.get_pressed()    #包含整个键盘的bool类型值
         if key_pressed[K_w] or key_pressed[K_UP]:
             me.move_up()
@@ -48,7 +48,7 @@ def main():
 
         screen.blit(background_image, (0, 0))    #background image必须写在player image前面，反之则会遮挡display player
         '''----- display player -----'''
-        switch_image = not switch_image    #取反
+        switch_image = not switch_image    #取反 实现图片不断切换
         if switch_image:
             screen.blit(me.player_image1,me.rect)
         else:
