@@ -26,6 +26,7 @@ def main():
     pygame.mixer.music.play(-1)    #循环播放
     clock = pygame.time.Clock()
     me = player.Player(background_size)    #Player类实例化
+    delay = 100    #用于延时
 
     switch_image = True    #切换显示image
     running = True
@@ -39,20 +40,27 @@ def main():
         key_pressed = pygame.key.get_pressed()    #包含整个键盘的bool类型值
         if key_pressed[K_w] or key_pressed[K_UP]:
             me.move_up()
-        if key_pressed[K_s] or key_pressed[K_DOWN]:
+        elif key_pressed[K_s] or key_pressed[K_DOWN]:
             me.move_down()
-        if key_pressed[K_a] or key_pressed[K_LEFT]:
+        elif key_pressed[K_a] or key_pressed[K_LEFT]:
             me.move_left()
-        if key_pressed[K_d] or key_pressed[K_RIGHT]:
+        elif key_pressed[K_d] or key_pressed[K_RIGHT]:
             me.move_right()
 
         screen.blit(background_image, (0, 0))    #background image必须写在player image前面，反之则会遮挡display player
-        '''----- display player -----'''
-        switch_image = not switch_image    #取反 实现图片不断切换
+        '''----- switch display player image -----'''
+        # switch_image = not switch_image  # 取反 实现图片不断切换
         if switch_image:
             screen.blit(me.player_image1,me.rect)
         else:
             screen.blit(me.player_image2,me.rect)
+
+        if not(delay%5):
+            switch_image = not switch_image  # 取反 实现图片不断切换
+
+        delay-=1
+        if not delay:
+            delay = 100
 
 
         pygame.display.flip()  # flip() 更新整个待显示的Surface对象到屏幕上；update() 更新部分内容显示到屏幕上，如果没有参数，则与flip功能相同
