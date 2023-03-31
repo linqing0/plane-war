@@ -49,13 +49,12 @@ def main():
 
         screen.blit(background_image, (0, 0))    #background image必须写在player image前面，反之则会遮挡display player
         '''----- switch display player image -----'''
-        # switch_image = not switch_image  # 取反 实现图片不断切换。
 
         delay -= 1
         if not delay:
             delay = 100
 
-        if not(delay%5):
+        if not(delay % 5):
             switch_image = not switch_image  # 取反(符号：~) 实现图片不断切换。这里不能使用更改判定bool值方法。
                                              # Python中，因为 True 等价于 1，而False等价于0，所以若变量a为True(即a=1),则 ~a 并不等于False，而是-2(因为a=11111110是-2的补码)
 
