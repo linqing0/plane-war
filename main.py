@@ -50,19 +50,19 @@ def main():
         screen.blit(background_image, (0, 0))    #background image必须写在player image前面，反之则会遮挡display player
         '''----- switch display player image -----'''
         # switch_image = not switch_image  # 取反 实现图片不断切换。
+
+        delay -= 1
+        if not delay:
+            delay = 100
+
+        if not(delay%5):
+            switch_image = not switch_image  # 取反(符号：~) 实现图片不断切换。这里不能使用更改判定bool值方法。
+                                             # Python中，因为 True 等价于 1，而False等价于0，所以若变量a为True(即a=1),则 ~a 并不等于False，而是-2(因为a=11111110是-2的补码)
+
         if switch_image:
             screen.blit(me.player_image1,me.rect)
         else:
             screen.blit(me.player_image2,me.rect)
-
-        if not(delay%5):
-            switch_image = not switch_image  # 取反(符号：~) 实现图片不断切换。这里不能使用更改判定bool值方法。
-                                             # Python中，因为 True 等价于 1，而False等价于0，所以若变量a为True（即 a = 1）,则 ~a 并不等于False，而是 -2 (因为a=11111110是-2的补码)
-
-        delay-=1
-        if not delay:
-            delay = 100
-
 
         pygame.display.flip()  # flip() 更新整个待显示的Surface对象到屏幕上；update() 更新部分内容显示到屏幕上，如果没有参数，则与flip功能相同
         clock.tick(60)  # 设置成60帧
