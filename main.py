@@ -15,7 +15,7 @@ pygame.display.set_caption('plane war')
 background_image = pygame.image.load(r'./image/sky.jpeg').convert()    #convert转换image的透明度,将图片进行surface对象，pygame现在会自动处理
 
 '''----- sound -----'''
-pygame.mixer.music.load(r'./sound/春花.mp3')
+pygame.mixer.music.load(r'./sound/Un Amico.mp3')
 bullet_sound = pygame.mixer.Sound(r'./sound/bullet.wav')
 bullet_sound.set_volume(0.2)
 missile = pygame.mixer.Sound('./sound/missile.wav')
