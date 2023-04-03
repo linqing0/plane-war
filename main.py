@@ -22,6 +22,7 @@ bullet_sound.set_volume(0.2)
 missile = pygame.mixer.Sound('./sound/missile.wav')
 missile.set_volume(0.2)
 
+
 ##### 主程序 #####
 def main():
     pygame.mixer.music.play(-1)    #循环播放
