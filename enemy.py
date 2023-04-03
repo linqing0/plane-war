@@ -9,7 +9,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect1 = self.enemy1.get_rect()
         self.width ,self.height = backfground_size[0],backfground_size[1]
         self.speed = 2
-        self.rect1.left , self.rect1.top =randint(self.width - self.width)
+        self.rect1.left , self.rect1.top =randint(0,self.width - self.width) , randint(-5*self.height,0)
 
         self.enemy2 = pygame.image.load(r'./image/enemy_lv2.png')
         self.enemy3 = pygame.image.load(r'./image/enemy_lv3.png')
@@ -19,3 +19,6 @@ class Enemy(pygame.sprite.Sprite):
         # self.rect2 = self.enemy2.get_rect()
         # self.rect3 = self.enemy3.get_rect()
         # self.rect4 = self.enemy4.get_rect()
+
+        def move_down(self):
+            pass

@@ -2,6 +2,7 @@ import pygame
 import sys
 import traceback
 import player
+import enemy
 from pygame.locals import *    #常量
 ##### 初始化 #####
 pygame.init()
