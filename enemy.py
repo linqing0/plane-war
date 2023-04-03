@@ -7,6 +7,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect1 = self.enemy1.get_rect()
 
 
+
         self.enemy2 = pygame.image.load(r'./image/enemy_lv2.png')
         self.enemy3 = pygame.image.load(r'./image/enemy_lv3.png')
         self.enemy4 = pygame.image.load(r'./image/enemy_lv4.png')
