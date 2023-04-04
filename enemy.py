@@ -37,7 +37,8 @@ class Enemy_Lv2(pygame.sprite.Sprite):
 class Enemy_Lv3(pygame.sprite.Sprite):
     def __init__(self,backfground_size):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(r'./image/enemy_lv3.png')
+        self.image1 = pygame.image.load(r'./image/enemy_lv3.png')
+        self.image2 = pygame.image.load(r'./image/enemy_lv3_02.png')
         self.rect = self.image.get_rect()
         self.width ,self.height = backfground_size[0],backfground_size[1]
         self.speed = 1

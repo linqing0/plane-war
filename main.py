@@ -22,16 +22,44 @@ bullet_sound.set_volume(0.2)
 missile = pygame.mixer.Sound('./sound/missile.wav')
 missile.set_volume(0.2)
 
+##### method #####
+'''----- add enemies -----'''
+def add_enemies_lv1(group1,group2,number):
+    for i in range(number):
+        lv1 = enemy.Enemy_Lv1(background_size)
+        group1.add(lv1)
+        group2.add(lv1)
+
+def add_enemies_lv2(group1,group2,number):
+    for i in range(number):
+        lv2 = enemy.Enemy_Lv2(background_size)
+        group1.add(lv2)
+        group2.add(lv2)
+
+def add_enemies_lv3(group1,group2,number):
+    for i in range(number):
+        lv3 = enemy.Enemy_Lv3(background_size)
+        group1.add(lv3)
+        group2.add(lv3)
 
 ##### 主程序 #####
 def main():
     pygame.mixer.music.play(-1)    #循环播放
     clock = pygame.time.Clock()
-    me = player.Player(background_size)    #Player类实例化
-    delay = 100    #用于延时
-
-    switch_image = True    #切换显示image
+    delay = 100  # 用于延时
+    switch_image = True  # 切换显示image
     running = True
+
+    me = player.Player(background_size)    #Player类实例化
+
+    enemies = pygame.sprite.Group()    #所有的enemy建一个组，只要检测me跟这个组的碰撞就行
+    enemies_lv1 = pygame.sprite.Group()
+    add_enemies_lv1(enemies_lv1,enemies,15)
+    enemies_lv2 = pygame.sprite.Group()
+    add_enemies_lv2(enemies_lv2, enemies, 5)
+    enemies_lv3 = pygame.sprite.Group()
+    add_enemies_lv3(enemies_lv3, enemies, 2)
+
     while running:
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -50,8 +78,7 @@ def main():
             me.move_right()
 
         screen.blit(background_image, (0, 0))    #background image必须写在player image前面，反之则会遮挡display player
-        '''----- switch display player image -----'''
-
+        '''----- switch display player -----'''
         delay -= 1
         if not delay:
             delay = 100
@@ -64,6 +91,11 @@ def main():
             screen.blit(me.player_image1,me.rect)
         else:
             screen.blit(me.player_image2,me.rect)
+
+        '''----- display enemies -----'''
+
+
+
 
         pygame.display.flip()  # flip() 更新整个待显示的Surface对象到屏幕上；update() 更新部分内容显示到屏幕上，如果没有参数，则与flip功能相同
         clock.tick(60)  # 设置成60帧
