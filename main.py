@@ -94,7 +94,9 @@ def main():
 
         '''----- display enemies -----'''
 
-
+        for each in enemies_lv1:
+            each
+            screen.blit(each.image,each.rect)
 
 
         pygame.display.flip()  # flip() 更新整个待显示的Surface对象到屏幕上；update() 更新部分内容显示到屏幕上，如果没有参数，则与flip功能相同
