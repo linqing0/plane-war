@@ -24,8 +24,8 @@ missile.set_volume(0.2)
 
 ##### method #####
 '''----- add enemies -----'''
-def add_enemies_lv1(group1,group2,number):
-    for i in range(number):
+def add_enemies_lv1(group1,group2,num):
+    for i in range(num):
         lv1 = enemy.Enemy_Lv1(background_size)
         group1.add(lv1)
         group2.add(lv1)
@@ -53,12 +53,12 @@ def main():
     me = player.Player(background_size)    #Player类实例化
 
     enemies = pygame.sprite.Group()    #所有的enemy建一个组，只要检测me跟这个组的碰撞就行
-    enemies_lv1 = pygame.sprite.Group()
-    add_enemies_lv1(enemies_lv1,enemies,15)
-    enemies_lv2 = pygame.sprite.Group()
-    add_enemies_lv2(enemies_lv2, enemies, 5)
-    enemies_lv3 = pygame.sprite.Group()
-    add_enemies_lv3(enemies_lv3, enemies, 2)
+    enemies_lv1_group = pygame.sprite.Group()
+    add_enemies_lv1(enemies,enemies_lv1_group,15)
+    enemies_lv2_group = pygame.sprite.Group()
+    add_enemies_lv2(enemies, enemies_lv2_group, 5)
+    enemies_lv3_group = pygame.sprite.Group()
+    add_enemies_lv3(enemies, enemies_lv3_group, 2)
 
     while running:
         for event in pygame.event.get():
@@ -78,6 +78,22 @@ def main():
             me.move_right()
 
         screen.blit(background_image, (0, 0))    #background image必须写在player image前面，反之则会遮挡display player
+
+        for eoo3 in enemies_lv3_group:
+            eoo3.move_down()
+            if switch_image:
+                screen.blit(eoo3.image1,eoo3.rect)
+            else:
+                screen.blit(eoo3.image2,eoo3.rect)
+
+        for eoo2 in enemies_lv2_group:
+            eoo2.move_down()
+            screen.blit(eoo2.image,eoo2.rect)
+
+        for eoo1 in enemies_lv1_group:
+            eoo1.move_down()
+            screen.blit(eoo1.image,eoo1.rect)
+
         '''----- switch display player -----'''
         delay -= 1
         if not delay:
@@ -94,8 +110,8 @@ def main():
 
         '''----- display enemies -----'''
 
-        for each in enemies_lv1:
-
+        # for each in enemies_lv1_group:
+        #     each.mo
 
 
 
